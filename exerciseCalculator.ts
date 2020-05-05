@@ -8,7 +8,7 @@ interface Data {
   average: number;
 }
 
-const calculateExercises = (target: number) => {
+const calculateExercises = (target: number): Data => {
   const hours = process.argv.slice(3);
   const totalHours = hours.reduce((a, b) => a + parseFloat(b), 0);
 
