@@ -8,19 +8,21 @@ interface Data {
   average: number;
 }
 
-const calculateExercises = (target: number): Data => {
-  const hours = process.argv.slice(3);
-  const totalHours = hours.reduce((a, b) => a + parseFloat(b), 0);
+const calculateExercises = (
+  dailyExerises: Array<number>,
+  target: number
+): Data => {
+  const totalHours = dailyExerises.reduce((a, b) => a + b, 0);
 
   const exercise = {} as Data;
-  exercise.periodLength = hours.length;
+  exercise.periodLength = dailyExerises.length;
 
-  exercise.trainingDays = hours.reduce(
-    (total, item) => (item !== "0" ? total + 1 : total),
+  exercise.trainingDays = dailyExerises.reduce(
+    (total, item) => (item !== 0 ? total + 1 : total),
     0
   );
 
-  const avg = totalHours / hours.length;
+  const avg = totalHours / dailyExerises.length;
 
   if (avg < 2) {
     exercise.success = false;
@@ -39,8 +41,9 @@ const calculateExercises = (target: number): Data => {
     exercise.ratingDescription = "Not too bad but could be better";
   }
   exercise.target = target;
-  exercise.average = totalHours / hours.length;
+  exercise.average = totalHours / dailyExerises.length;
 
   return exercise;
 };
-console.log(calculateExercises(Number(process.argv[2])));
+export default calculateExercises;
+//console.log(calculateExercises([1, 0, 2, 0, 3, 0, 2.5], 2.5));

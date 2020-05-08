@@ -1,5 +1,4 @@
-type BmiResult = string;
-const calculateBmi = (height: number, weight: number): BmiResult => {
+const CalculateBmi = (height: number, weight: number) => {
   const bmi = weight / (((height / 100) * height) / 100);
   if (bmi < 18.5) {
     return "Underweight";
@@ -8,5 +7,7 @@ const calculateBmi = (height: number, weight: number): BmiResult => {
   } else if (bmi > 25) {
     return "Overweight";
   }
+  return;
 };
-console.log(calculateBmi(Number(process.argv[2]), Number(process.argv[3])));
+export default CalculateBmi;
+//console.log(CalculateBmi(Number(process.argv[2]), Number(process.argv[3])));
