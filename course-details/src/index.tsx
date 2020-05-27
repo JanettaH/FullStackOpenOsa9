@@ -11,6 +11,11 @@ interface WithdDescription {
   description: string;
 }
 
+interface CustomPart extends CoursePartBase, WithdDescription {
+  name: "Custom Part";
+  period: number;
+}
+
 interface CoursePartOne extends CoursePartBase, WithdDescription {
   name: "Fundamentals";
 }
@@ -25,7 +30,11 @@ interface CoursePartThree extends CoursePartBase, WithdDescription {
   exerciseSubmissionLink: string;
 }
 
-export type CoursePart = CoursePartOne | CoursePartTwo | CoursePartThree;
+export type CoursePart =
+  | CoursePartOne
+  | CoursePartTwo
+  | CoursePartThree
+  | CustomPart;
 
 const FrontPage: React.FC = () => {
   return <App />;

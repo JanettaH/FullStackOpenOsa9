@@ -24,6 +24,12 @@ const App = () => {
       description: "Confusing description",
       exerciseSubmissionLink: "https://fake-exercise-submit.made-up-url.dev",
     },
+    {
+      name: "Custom Part",
+      exerciseCount: 11,
+      description: "Custom part description",
+      period: 4,
+    },
   ];
 
   return (
